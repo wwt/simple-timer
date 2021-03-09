@@ -1,0 +1,118 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: proxima-nova,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif,BlinkMacSystemFont,Oxygen,Fira Sans,Droid Sans,Helvetica Neue;
+}
+
+body {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 10rem 0 40vh;
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    color: #0086EA;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#time {
+    font-size: 7vw;
+    font-weight: bold;
+}
+
+#until {
+    font-size: 1vw;
+}
+
+#message {
+    font-size: 3vw;
+}
+
+#bg {
+    line-height: 1.15;
+    font-size: 16px;
+    word-spacing: 1px;
+    -webkit-font-smoothing: antialiased;
+    color: #142029;
+    border: 0 solid #cfd7e3;
+    box-sizing: border-box;
+    pointer-events: none;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    bottom: 0;
+}
+
+#bg .angle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 65%;
+    transform-origin: 0;
+    border: 0 solid #cfd7e3;
+}
+
+#bg .skew-cw {
+    transform: skewY(30deg);
+}
+
+#bg .skew-ccw {
+    transform: skewY(-30deg);
+}
+
+#bg .angle:nth-child(1) {
+    background: linear-gradient(120deg,#004fa1,#006cc2 120%);
+    height: 850px;
+    top: 187px;
+    transform-origin: 0 50%;
+}
+
+#bg .angle:nth-child(2) {
+    background: linear-gradient(80deg,#0081da,#004fa1 50%);
+    top: 120px;
+    height: 380px;
+}
+
+#bg .angle:nth-child(3) {
+    background: linear-gradient(60deg,rgba(229,242,246,0),#bfe0f2 50%);
+    mix-blend-mode: multiply;
+    height: 380px;
+    top: 60px;
+    width: 100%;
+}
+
+#bg .angle:nth-child(4) {
+    background: linear-gradient(45deg,#004fa1 60%,#0078cf 85%,rgba(0,129,218,0));
+    height: 1000px;
+    width: 100%;
+    transform: skewY(-30deg);
+    transform-origin: 100%;
+}
+
+#bg .angle:nth-child(5) {
+    background: linear-gradient(120deg,#004fa1,#0081da 150%);
+    height: 580px;
+    top: 225px;
+    width: 90%;
+    opacity: 0.7;
+    transform: skewY(-30deg);
+    transform-origin: 100%;
+}
+
+#bg .angle:nth-child(6) {
+    background: linear-gradient(270deg,#004fa1,rgba(0,129,218,0));
+    height: 400px;
+    top: 650px;
+    width: 50%;
+    opacity: 0.8;
+    left: auto;
+    transform-origin: 100%;
+}
