@@ -1,5 +1,5 @@
 {
-    "public": "docs",
+    "public": ".",
     "rewrites": [
         { "source": "**", "destination": "/index.html" }
     ]
