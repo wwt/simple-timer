@@ -167,6 +167,15 @@ function parseConfig(query) {
     return config;
 }
 
+function setPath(url) {
+    if (location.hostname.includes('localhost')) {
+        location.href = url;
+    } else {
+        location.hash = url;
+        location.reload();
+    }
+}
+
 function createLink() {
     const inputs = [...document.querySelectorAll('#form input')];
 
@@ -190,8 +199,7 @@ function createLink() {
     }).join('&');
 
     if (values.dur.seconds) {
-        location.hash = `/duration/${values.dur.seconds}` + (query ? `?${query}` : '');
-        return location.reload();
+        return setPath(`/duration/${values.dur.seconds}` + (query ? `?${query}` : ''));
     }
 
     if (values.dur.hour || values.dur.min || values.dur.sec) {
@@ -201,8 +209,7 @@ function createLink() {
         if (values.dur.min) hash += `/${values.dur.min}/min`;
         if (values.dur.sec) hash += `/${values.dur.sec}/sec`;
 
-        location.hash = `#${hash}` + (query ? `?${query}` : '');
-        return location.reload();
+        return setPath(`${hash}` + (query ? `?${query}` : ''));
     }
 
     let hash = '';
@@ -215,6 +222,5 @@ function createLink() {
         hash = `/date/${values.date.year}/${values.date.month}/${values.date.day}` + hash;
     }
 
-    location.hash = hash + (query ? `?${query}` : '');
-    return location.reload();
+    setPath(hash + (query ? `?${query}` : ''));
 }

@@ -1,6 +1,11 @@
 {
     "public": ".",
     "rewrites": [
-        { "source": "**", "destination": "/index.html" }
+        { "source": "*/index.css", "destination": "/index.css" },
+        { "source": "*/index.js", "destination": "/index.js" },
+        { "source": "!**(\\.js|\\.css)", "destination": "/index.html" }
+    ],
+    "redirects": [
+        { "source": "/simple-timer", "destination": "/" }
     ]
 }
