@@ -9,6 +9,59 @@
         <div id="time"></div>
         <div id="message"></div>
         <div id="until"></div>
+        <div id="form" class="hide">
+            <h1>Simple Timer</h1>
+            <p>Enter a duration:</p>
+            <div class="option">
+                <label for="dur-seconds">/duration/</label>
+                <input name="dur-seconds" type="text" placeholder="seconds" />
+            </div>
+            <div class="option">
+                <span class="label">/duration/</span>
+                <input name="dur-hour" type="text" placeholder="hours" />
+                <label for="dur-hour">/hour/</label>
+                <input name="dur-min" type="text" placeholder="minutes" />
+                <label for="dur-min">/min/</label>
+                <input name="dur-sec" type="text" placeholder="seconds" />
+                <label for="dur-sec">/sec</label>
+            </div>
+            <p>Or Use a Date and/or Time:</p>
+            <div class="option">
+                <label for="date-year">/date/</label>
+                <input name="date-year" type="text" placeholder="YYYY" />
+                <label for="date-month">/</label>
+                <input name="date-month" type="text" placeholder="MM" />
+                <label for="date-day">/</label>
+                <input name="date-day" type="text" placeholder="DD" />
+            </div>
+            <div class="option">
+                <label for="time-hour">/time/</label>
+                <input name="time-hour" type="text" placeholder="hour" />
+                <label for="time-min">/</label>
+                <input name="time-min" type="text" placeholder="minute" />
+                <label for="time-sec">/</label>
+                <input name="time-sec" type="text" placeholder="second" />
+            </div>
+            <p>Configure messages:</p>
+            <div class="option config">
+                <label for="config-start">Start Message</label>
+                <input name="config-start" type="text" placeholder="Welcome" />
+                <span class="info">This message will be displayed if the timer has more than 24 hours left.</span>
+            </div>
+            <div class="option config">
+                <label for="config-end">End Message</label>
+                <input name="config-end" type="text" placeholder="Time to Start" />
+                <span class="info">This message will be displayed once the timer has completed.</span>
+            </div>
+            <div class="option config">
+                <label for="config-message">Message</label>
+                <input name="config-message" type="text" placeholder="The event will begin shortly." />
+                <span class="info">This message will be displayed below the timer.</span>
+            </div>
+            <div class="submit-shell">
+                <button id="submit" type="button">Start Timer</button>
+            </div>
+        </div>
         <div id="bg" aria-hidden="true">
             <span class="angle skew-cw"></span>
             <span class="angle skew-cw"></span>

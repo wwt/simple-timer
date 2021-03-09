@@ -1,14 +1,30 @@
 window.addEventListener('load', app);
 
 function app() {
-    const until = parseUntil(location.pathname.replace('/simple-timer', ''));
-    const config = parseConfig(location.search);
+    let path = location.pathname.replace('/simple-timer', '');
+    let query = location.search;
+
+    if (location.href.includes('#/')) {
+        path = location.hash.split('?')[0].substr(1);
+        query = '?' + location.hash.split('?')[1];
+    }
+
+    const until = parseUntil(path);
+    const config = parseConfig(query);
 
     const DOM = {
         time: document.querySelector('#time'),
         until: document.querySelector('#until'),
         message: document.querySelector('#message'),
+        form: document.querySelector('#form'),
+        submit: document.querySelector('#submit'),
     };
+
+    if (!until) {
+        DOM.form.classList.remove('hide');
+        DOM.submit.addEventListener('click', createLink);
+        return;
+    }
 
     const asDate = new Date(until);
 
@@ -31,19 +47,19 @@ function app() {
 
     setInterval(setTimeRemaining, 1000);
     setTimeRemaining();
+
+    let fullscreen = false;
+
+    document.addEventListener('click', async () => {
+        if (!fullscreen) {
+            await document.body.requestFullscreen();
+            fullscreen = true;
+        } else {
+            document.exitFullscreen();
+            fullscreen = false;
+        }
+    });
 }
-
-let fullscreen = false;
-
-document.addEventListener('click', async () => {
-    if (!fullscreen) {
-        await document.body.requestFullscreen();
-        fullscreen = true;
-    } else {
-        document.exitFullscreen();
-        fullscreen = false;
-    }
-});
 
 const units = {
     'day': 24 * 60 * 60 * 1000,
@@ -126,6 +142,8 @@ function parseUntil(url) {
 
         return day;
     }
+
+    return null;
 }
 
 function parseConfig(query) {
@@ -142,4 +160,56 @@ function parseConfig(query) {
     })
 
     return config;
+}
+
+function createLink() {
+    const inputs = [...document.querySelectorAll('#form input')];
+
+    const values = inputs.reduce((values, input) => {
+        const [group, key] = input.getAttribute('name').split('-');
+
+        values[group] = values[group] || {};
+        values[group][key] = /\d+/.test(input.value) ? parseInt(input.value) : input.value;
+
+        return values;
+    }, {});
+
+    const config = {
+        startMessage: values.config.start,
+        endMessage: values.config.end,
+        message: values.config.message,
+    };
+
+    const query = Object.entries(config).filter(([key, value]) => value).map(([key, value]) => {
+        return encodeURIComponent(key) + '=' + encodeURIComponent(value);
+    }).join('&');
+
+    if (values.dur.seconds) {
+        location.hash = `/duration/${values.dur.seconds}` + (query ? `?${query}` : '');
+        return location.reload();
+    }
+
+    if (values.dur.hour || values.dur.min || values.dur.sec) {
+        let hash = '/duration';
+
+        if (values.dur.hour) hash += `/${values.dur.hour}/hour`;
+        if (values.dur.min) hash += `/${values.dur.min}/min`;
+        if (values.dur.sec) hash += `/${values.dur.sec}/sec`;
+
+        location.hash = `#${hash}` + (query ? `?${query}` : '');
+        return location.reload();
+    }
+
+    let hash = '';
+
+    if (values.time.hour || values.time.min || values.time.sec) {
+        hash = `/time/${values.time.hour}/${values.time.min}/${values.time.sec}`;
+    }
+
+    if (values.date.year) {
+        hash = `/date/${values.date.year}/${values.date.month}/${values.date.day}` + hash;
+    }
+
+    location.hash = hash + (query ? `?${query}` : '');
+    return location.reload();
 }

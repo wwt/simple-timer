@@ -116,3 +116,75 @@ body {
     left: auto;
     transform-origin: 100%;
 }
+
+.hide {
+    display: none;
+}
+
+#form {
+    width: 100vw;
+    max-width: 40rem;
+    padding: 1rem;
+}
+
+#form h1 {
+    text-align: center;
+}
+
+#form .option {
+    padding-left: 1rem;
+    margin: 0.5rem;
+}
+
+#form .option.config {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+#form label, #form .label {
+    font-weight: bold;
+}
+
+#form input {
+    padding: 0.125rem;
+    width: 4rem;
+    border: none;
+    color: #0086EA;
+    border-bottom: 1px solid #0086EA44;
+}
+
+#form .config input {
+    flex: 1;
+    max-width: 27.5rem;
+}
+
+
+#form input:focus {
+    outline: none;
+    border-bottom: 1px solid #0086EA;
+}
+
+#form .config .info {
+    position: absolute;
+    bottom: -1.5rem;
+    right: 0;
+    font-size: 0.75rem;
+}
+
+.submit-shell {
+    text-align: center;
+    padding: 1rem;
+}
+
+#submit {
+    background-color: #0079cd;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.125rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+}
