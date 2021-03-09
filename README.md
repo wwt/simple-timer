@@ -5,6 +5,8 @@ A simple timer web page to show a countdown on your screen.
 Install: `npm ci`
 Run: `npm start`
 
+Or visit: [wwt.github.com/simple-timer](https://wwt.github.com/simple-timer);
+
 ## Usage
 
 The timer is completely URL driven where the path drives the time and the query string drives the configuration.

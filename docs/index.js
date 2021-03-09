@@ -1,7 +1,7 @@
 window.addEventListener('load', app);
 
 function app() {
-    const until = parseUntil(location.pathname);
+    const until = parseUntil(location.pathname.replace('/simple-timer', ''));
     const config = parseConfig(location.search);
 
     const DOM = {
