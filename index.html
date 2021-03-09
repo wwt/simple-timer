@@ -13,34 +13,34 @@
             <h1>Simple Timer</h1>
             <p>Enter a duration:</p>
             <div class="option">
-                <label for="dur-seconds">/duration/</label>
-                <input name="dur-seconds" type="text" placeholder="seconds" />
+                <span class="context" for="dur-seconds">/duration/</span>
+                <input name="dur-seconds" type="text" placeholder="seconds" aria-label="duration seconds"/>
             </div>
             <div class="option">
-                <span class="label">/duration/</span>
-                <input name="dur-hour" type="text" placeholder="hours" />
-                <label for="dur-hour">/hour/</label>
-                <input name="dur-min" type="text" placeholder="minutes" />
-                <label for="dur-min">/min/</label>
-                <input name="dur-sec" type="text" placeholder="seconds" />
-                <label for="dur-sec">/sec</label>
+                <span class="context">/duration/</span>
+                <input name="dur-hour" type="text" placeholder="hours" aria-label="full duration hours"/>
+                <span class="context">/hour/</span>
+                <input name="dur-min" type="text" placeholder="minutes" aria-label="full duration minutes"/>
+                <span class="context">/min/</span>
+                <input name="dur-sec" type="text" placeholder="seconds" aria-label="full duration seconds"/>
+                <span class="context">/sec</span>
             </div>
             <p>Or Use a Date and/or Time:</p>
             <div class="option">
-                <label for="date-year">/date/</label>
-                <input name="date-year" type="text" placeholder="YYYY" />
-                <label for="date-month">/</label>
-                <input name="date-month" type="text" placeholder="MM" />
-                <label for="date-day">/</label>
-                <input name="date-day" type="text" placeholder="DD" />
+                <span class="context">/date/</span>
+                <input name="date-year" type="text" placeholder="YYYY" aria-label="date year (YYYY)"/>
+                <span class="context">/</span>
+                <input name="date-month" type="text" placeholder="MM" aria-label="date month (MM)"/>
+                <span class="context">/</span>
+                <input name="date-day" type="text" placeholder="DD" aria-label="date day (DD)"/>
             </div>
             <div class="option">
-                <label for="time-hour">/time/</label>
-                <input name="time-hour" type="text" placeholder="hour" />
-                <label for="time-min">/</label>
-                <input name="time-min" type="text" placeholder="minute" />
-                <label for="time-sec">/</label>
-                <input name="time-sec" type="text" placeholder="second" />
+                <span class="context">/time/</span>
+                <input name="time-hour" type="text" placeholder="hour (24)" aria-label="time hours (0 to 24)"/>
+                <span class="context">/</span>
+                <input name="time-min" type="text" placeholder="minute" aria-label="time minutes"/>
+                <span class="context">/</span>
+                <input name="time-sec" type="text" placeholder="second" aria-label="time seconds"/>
             </div>
             <p>Configure messages:</p>
             <div class="option config">
