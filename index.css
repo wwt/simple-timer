@@ -188,3 +188,35 @@ body {
     border: none;
     cursor: pointer;
 }
+
+#submit:hover {
+    background-color: #004fa1;
+}
+
+#submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2em rgb(0 121 205 / 30%);
+}
+
+#create {
+    text-decoration: none;
+    font-weight: bold;
+    color: #0079cd;
+    font-size: 1.25rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding-right: 1.25rem;
+}
+
+#create::after {
+    content: '';
+    position: absolute;
+    border-right: 3px solid #0079cd;
+    border-top: 3px solid #0079cd;
+    height: 0.75rem;
+    width: 0.75rem;
+    transform: rotate(45deg);
+    top: 0.25rem;
+    right: 0;
+}

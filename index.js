@@ -18,6 +18,7 @@ function app() {
         message: document.querySelector('#message'),
         form: document.querySelector('#form'),
         submit: document.querySelector('#submit'),
+        create: document.querySelector('#create'),
     };
 
     if (!until) {
@@ -25,6 +26,8 @@ function app() {
         DOM.submit.addEventListener('click', createLink);
         return;
     }
+
+    DOM.create.classList.remove('hide');
 
     const asDate = new Date(until);
 
@@ -50,7 +53,9 @@ function app() {
 
     let fullscreen = false;
 
-    document.addEventListener('click', async () => {
+    document.body.addEventListener('click', async (e) => {
+        if (e.target === DOM.create) return;
+
         if (!fullscreen) {
             await document.body.requestFullscreen();
             fullscreen = true;
@@ -203,7 +208,7 @@ function createLink() {
     let hash = '';
 
     if (values.time.hour || values.time.min || values.time.sec) {
-        hash = `/time/${values.time.hour}/${values.time.min}/${values.time.sec}`;
+        hash = `/time/${values.time.hour || 0}/${values.time.min || 0}/${values.time.sec || 0}`;
     }
 
     if (values.date.year) {
