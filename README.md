@@ -3,9 +3,12 @@
 A simple timer web page to show a countdown on your screen.
 
 Install: `npm ci`
+
 Run: `npm start`
 
 Or visit: [wwt.github.io/simple-timer](https://wwt.github.io/simple-timer)
+
+Example: [Timer until 5:00 PM](https://wwt.github.io/simple-timer/#/time/17/00)
 
 ## Usage
 
@@ -15,15 +18,15 @@ The timer is completely URL driven where the path drives the time and the query 
 
 Supported urls:
 
- - `/duration/<sec>`: starts a timer of a given number of seconds after page refresh. Refreshing restarts the timer.
- - `/duration/<hour>/hour/<min>/min/<sec>/sec`: starts a timer of the given duration for the given units. Do not have to specify any particular part.
- - `/duration/<hour>/hour/<min>/min`
- - `/duration/<min>/min`
- - `/time/<hour>/<min>/<sec>`: starts a timer for the next time the local clock will read the given time. Do not have to specify minutes or seconds.
- - `/time/<hour>/<min>`
- - `/time/<hour>`
- - `/date/<yyyy>/<MM>/<dd>`: starts a timer for midnight of the given date.
- - `/date/<yyyy>/<MM>/<dd>/time/<hour>/hour/<min>/min`: optionally can add a time to the end of a date.
+ - `#/duration/<sec>`: starts a timer of a given number of seconds after page refresh. Refreshing restarts the timer.
+ - `#/duration/<hour>/hour/<min>/min/<sec>/sec`: starts a timer of the given duration for the given units. Do not have to specify any particular part.
+ - `#/duration/<hour>/hour/<min>/min`
+ - `#/duration/<min>/min`
+ - `#/time/<hour>/<min>/<sec>`: starts a timer for the next time the local clock will read the given time. Do not have to specify minutes or seconds.
+ - `#/time/<hour>/<min>`
+ - `#/time/<hour>`
+ - `#/date/<yyyy>/<MM>/<dd>`: starts a timer for midnight of the given date.
+ - `#/date/<yyyy>/<MM>/<dd>/time/<hour>/<min>`: optionally can add a time to the end of a date.
 
 Supported query config:
 
