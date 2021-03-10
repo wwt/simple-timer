@@ -109,8 +109,21 @@ function parseTime(str) {
     const parts = str.split(' ');
 
     let time = parseInt(parts[0]) * units.hour;
-    if (parts.length === 1) return time;
+    
+    if (['am', 'pm'].includes(parts[parts.length - 1].toLowerCase())) {
+        const period = parts.pop().toLowerCase();
 
+        if (period === 'am' && parseInt(parts[0]) === 12) {
+            time = 0;
+        }
+
+        if (period === 'pm' && parseInt(parts[0]) !== 12) {
+            time += 12 * units.hour;
+        }
+    }
+
+    if (parts.length === 1) return time;
+    
     time += parseInt(parts[1]) * units.min;
     if (parts.length === 2) return time;
 
@@ -216,7 +229,10 @@ function createLink() {
 
     if (values.time.hour || values.time.min || values.time.sec) {
         hash = `/time/${values.time.hour || 0}/${values.time.min || 0}/${values.time.sec || 0}`;
+
+        if (values.time.period) hash += `/${values.time.period}`;
     }
+
 
     if (values.date.year) {
         hash = `/date/${values.date.year}/${values.date.month}/${values.date.day}` + hash;
