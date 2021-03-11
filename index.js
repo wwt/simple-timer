@@ -19,6 +19,7 @@ function app() {
         form: document.querySelector('#form'),
         submit: document.querySelector('#submit'),
         create: document.querySelector('#create'),
+        background: document.querySelector('#bg'),
     };
 
     if (!until) {
@@ -26,29 +27,54 @@ function app() {
         DOM.submit.addEventListener('click', createLink);
         return;
     }
-
+    
+    if (config.finish) {
+        DOM.background.classList.add('hidden');
+    }
+    
     DOM.create.classList.remove('hide');
-
+    
     const asDate = new Date(until);
-
+    
     if (until - Date.now() > units.day) {
         DOM.until.innerHTML = 'Starting at ' + asDate.toLocaleDateString() + ' ' + asDate.toLocaleTimeString();
     } else {
         DOM.until.innerHTML = 'Starting at ' + asDate.toLocaleTimeString();
     }
-
+    
     DOM.message.innerHTML = config.message;
 
+    let frame = 0;
+    
     function setTimeRemaining() {
         const left = until - Date.now();
+        
+        if (config.finish && frame) {
+            if (left < 2000) {
+                DOM.background.classList.add('hidden');
+            } else {
+                DOM.background.classList.add('animate');
+                DOM.background.classList.remove('hidden');
+            }
+        }
 
-        if (left <= 0) return DOM.time.innerHTML = config.endMessage;
+        if (left <= 0) {
+            if (config.finish) {
+                const url = /^http/.test(config.finish) ? config.finish : `http://${config.finish}`;
+                setTimeout(() => location.href = url, 500);
+            }
+
+            clearInterval(int);
+
+            return DOM.time.innerHTML = config.endMessage;
+        };
         if (left >= units.day) return DOM.time.innerHTML = config.startMessage;
 
         DOM.time.innerHTML = humanTime(left);
+        frame++;
     }
 
-    setInterval(setTimeRemaining, 1000);
+    const int = setInterval(setTimeRemaining, 1000);
     setTimeRemaining();
 
     let fullscreen = false;
@@ -205,6 +231,7 @@ function createLink() {
         startMessage: values.config.start,
         endMessage: values.config.end,
         message: values.config.message,
+        finish: values.config.finish,
     };
 
     const query = Object.entries(config).filter(([key, value]) => value).map(([key, value]) => {

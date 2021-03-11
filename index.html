@@ -61,11 +61,16 @@
                 <input name="config-message" type="text" placeholder="The event will begin shortly." />
                 <span class="info">This message will be displayed below the timer.</span>
             </div>
+            <div class="option config">
+                <label for="config-finish">On Complete</label>
+                <input name="config-finish" type="text" placeholder="URL" />
+                <span class="info">Visit a URL when the timer completes. Defaults to nothing.</span>
+            </div>
             <div class="submit-shell">
                 <button id="submit" type="button">Start Timer</button>
             </div>
         </div>
-        <div id="bg" aria-hidden="true">
+        <div id="bg" aria-hidden="true" class="">
             <span class="angle skew-cw"></span>
             <span class="angle skew-cw"></span>
             <span class="angle skew-cw"></span>
