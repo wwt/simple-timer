@@ -2,10 +2,28 @@
 <html>
     <head>
         <title>Timer</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <link href="index.css" rel="stylesheet" />
         <script src="index.js"></script>
     </head>
     <body>
+        <div id="bg" aria-hidden="true" class="">
+            <span class="angle skew-cw"></span>
+            <span class="angle skew-cw"></span>
+            <span class="angle skew-cw"></span>
+            <span class="angle skew-ccw"></span>
+            <span class="angle skew-ccw"></span>
+            <span class="angle skew-cw"></span>
+        </div>
+        <div id="bg-blue" aria-hidden="true" class="hidden">
+            <span class="triangle dark"></span>
+            <span class="triangle light">
+                <span class="triangle light-2"></span>
+                <span class="line up top"></span>
+                <span class="line up bottom"></span>
+            </span>
+            <span class="line down"></span>
+        </div>
         <div id="time"></div>
         <div id="message"></div>
         <div id="until"></div>
@@ -66,17 +84,14 @@
                 <input name="config-finish" type="text" placeholder="URL" />
                 <span class="info">Visit a URL when the timer completes. Defaults to nothing.</span>
             </div>
+            <div class="option config">
+                <label for="config-theme">Theme</label>
+                <input name="config-theme" type="text" placeholder="white" />
+                <span class="info">Blue or white theme. Defaults to white.</span>
+            </div>
             <div class="submit-shell">
                 <button id="submit" type="button">Start Timer</button>
             </div>
-        </div>
-        <div id="bg" aria-hidden="true" class="">
-            <span class="angle skew-cw"></span>
-            <span class="angle skew-cw"></span>
-            <span class="angle skew-cw"></span>
-            <span class="angle skew-ccw"></span>
-            <span class="angle skew-ccw"></span>
-            <span class="angle skew-cw"></span>
         </div>
     </body>
 </html>

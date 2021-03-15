@@ -33,6 +33,7 @@ function app() {
     }
     
     DOM.create.classList.remove('hide');
+    document.body.className = config.theme || '';
     
     const asDate = new Date(until);
     
@@ -232,6 +233,7 @@ function createLink() {
         endMessage: values.config.end,
         message: values.config.message,
         finish: values.config.finish,
+        theme: values.config.theme,
     };
 
     const query = Object.entries(config).filter(([key, value]) => value).map(([key, value]) => {
